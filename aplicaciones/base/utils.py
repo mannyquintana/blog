@@ -8,7 +8,7 @@ def consulta(id):
         return None
 
 def obtenerRedes():
-    return RedesSociales.objects.filter(estado = True).latest('fecha_creacion')
+    return RedesSociales.objects.filter(estado = True).first()
 
 def obtenerWeb():
     return Web.objects.filter(estado = True).latest('fecha_creacion')
@@ -17,10 +17,10 @@ def generarCategoria(request,nombre_categoria):
     posts = Post.objects.filter(
                         estado = True,
                         publicado = True,
-                        categoria = Categoria.objects.get(nombre = nombre_categoria)
+                        categoria = Categoria.objects.filter(nombre = nombre_categoria).first()
                         )
     try:
-        categoria = Categoria.objects.get(nombre = nombre_categoria)
+        categoria = Categoria.objects.filter(nombre = nombre_categoria).first()
     except:
         categoria = None
 
