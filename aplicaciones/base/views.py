@@ -119,8 +119,8 @@ class Suscribir(View):
     def post(self,request,*args,**kwargs):
         correo = request.POST.get('correo')
         Suscriptor.objects.create(correo = correo)
-        asunto = 'GRACIAS POR SUSCRIBIRTE A BLOG.DEV!'
-        mensaje = 'Te haz suscrito exitosamente a Blog.Dev, Gracias por tu preferencia!!!'
+        asunto = 'GRACIAS POR SUSCRIBIRTE A Cesun Blog!'
+        mensaje = 'Te haz suscrito exitosamente a Cesun Blog, Gracias por tu preferencia!!!'
         try:
             send_mail(asunto,mensaje,EMAIL_HOST_USER,[correo])
         except:
